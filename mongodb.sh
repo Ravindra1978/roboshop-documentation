@@ -23,18 +23,18 @@ VALIDATE()
 cp mongodb.repo /etc/yum.repos.d/mongo.repo  &>> $LOGFILE
 VALIDATE $? "copying mongodb repo" 
 
-yum install mongodb-org -y &>> $LOGILE
+yum install mongodb-org -y &>> $LOGFILE
 VALIDATE $?  "Installing mongodb-org"
 
-systemctl enable mongod &>> $LOGILE
+systemctl enable mongod &>> $LOGFILE
 VALIDATE $?  "Enable mongod"
 
-systemctl start mongod &>> $LOGILE
+systemctl start mongod &>> $LOGFILE
 VALIDATE $?  "starting mongod"
 
-sed -i 's/127.0.0.1/ 0.0.0.0/' /etc/mongod.conf &>> $LOGILE
+sed -i 's/127.0.0.1/ 0.0.0.0/' /etc/mongod.conf &>> $LOGFILE
 VALIDATE $?  "Edited  mongod IP conf value to 0.0.0.0"
 
-systemctl restart mongod &>> $LOGILE
+systemctl restart mongod &>> $LOGFILE
 VALIDATE $?  "Restarting mongod"
 
