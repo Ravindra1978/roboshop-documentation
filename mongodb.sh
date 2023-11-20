@@ -20,21 +20,21 @@ VALIDATE()
        echo "$2 is SUCCESS..."
     fi
 }
-cp mongodb.repo /etc/yum.repos.d/mongo.repo
-VALIDATE $? "copying mongodb repo"
+cp mongodb.repo /etc/yum.repos.d/mongo.repo  &>> $LOGILE
+VALIDATE $? "copying mongodb repo" 
 
-yum install mongodb-org -y &>> $LOGGILE
+yum install mongodb-org -y &>> $LOGILE
 VALIDATE $?  "Installing mongodb-org"
 
-systemctl enable mongod
+systemctl enable mongod &>> $LOGILE
 VALIDATE $?  "Enable mongod"
 
-systemctl start mongod
+systemctl start mongod &>> $LOGILE
 VALIDATE $?  "starting mongod"
 
-sed -i 's/127.0.0.1/ 0.0.0.0/' /etc/mongod.conf
+sed -i 's/127.0.0.1/ 0.0.0.0/' /etc/mongod.conf &>> $LOGILE
 VALIDATE $?  "Edited  mongod IP conf value to 0.0.0.0"
 
-systemctl restart mongod
+systemctl restart mongod &>> $LOGILE
 VALIDATE $?  "Restarting mongod"
 
