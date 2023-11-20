@@ -13,11 +13,12 @@ fi
 
 VALIDATE() 
 {
-    if [ $1 -ne 0 ]
+    if [ $1 -ne 0 ];
     then 
        echo "$2 is FAILURE...."
     else
        echo "$2 is SUCCESS..."
+    fi
 }
 cp mongodb.repo /etc/yum.repos.d/mongo.repo
 VALIDATE $? "copying mongodb repo"
