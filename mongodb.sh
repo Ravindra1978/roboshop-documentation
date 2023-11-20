@@ -20,7 +20,7 @@ VALIDATE()
        echo "$2 is SUCCESS..."
     fi
 }
-cp mongodb.repo /etc/yum.repos.d/mongo.repo  &>> $LOGILE
+cp mongodb.repo /etc/yum.repos.d/mongo.repo  &>> $LOGFILE
 VALIDATE $? "copying mongodb repo" 
 
 yum install mongodb-org -y &>> $LOGILE
